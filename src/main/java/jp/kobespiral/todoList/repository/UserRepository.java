@@ -1,5 +1,13 @@
 package jp.kobespiral.todoList.repository;
 
-public class UserRepository {
-    
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import jp.kobespiral.todoList.entity.User;
+
+@Repository
+public interface UserRepository extends CrudRepository<User, Long> {
+
+    public Iterable<User> findUserByUidLike(String uid);
+
 }
