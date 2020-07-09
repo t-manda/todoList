@@ -7,7 +7,7 @@
   </head>
 
   <body>
-    <h1>uid検索結果</h1>
+    <h1>全ユーザ表示</h1>
     <table>
       <tr th:each="p: ${ulist}">
         <td>[[${p.uid}]]</td>
@@ -15,5 +15,6 @@
         <td>[[${p.checkedAt}]]</td>
       </tr>
     </table>
+    <a href="index.html">return</a><br />
   </body>
 </html>

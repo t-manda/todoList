@@ -10,31 +10,27 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto {
 
-    //DB用ID
+    // DB用ID
     @Id
     private Long id;
-    
-    //ユーザID
+
+    // ユーザID
     private String uid;
 
-    //ユーザ名
+    // ユーザ名
     private String name;
 
-    //作成した時間
+    // 作成した時間
     @Temporal(TemporalType.TIMESTAMP)
-    private Date checkedAt; //検針日
+    private Date checkedAt;
 
-
-	public static UserDto build(User u) {
-		return new UserDto(u.getId(), u.getUid(), u.getName(), u.getCheckedAt());
-	}
-
-
+    public static UserDto build(User u) {
+        return new UserDto(u.getId(), u.getUid(), u.getName(), u.getCheckedAt());
+    }
 
 }
