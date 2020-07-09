@@ -18,7 +18,7 @@ public class UserService {
     public UserDto getUser(String uid) {
 
         for (User u : users.findUserByUidLike("%" + uid + "%")) {
-            return UserDto.build(u);// 1爪を選ぶ
+            return UserDto.build(u);// 1つ目を返す
         }
         return null;
     }

@@ -1,5 +1,7 @@
 package jp.kobespiral.todoList.controller;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,36 @@ public class UserController {
     @Autowired
     UserService us;
 
+    /**
+     * NullPointerExceptionを発生させる Runtime Exception
+     */
+    @GetMapping("/occurNullPointerException")
+    public String occurNullPointerException() {
+        throw new NullPointerException("NullPointerExceptionが発生しました");
+    }
+
+    /**
+     * FileNotFoundExceptionを発生させる 検査例外
+     * 
+     * @throws FileNotFoundException
+     */
+    @GetMapping("/occurFileNotFoundException")
+    public String occurFileNotFoundException() throws FileNotFoundException {
+        throw new FileNotFoundException("FileNotFoundExceptionが発生しました");
+    }
+
+    /**
+     * IOExceptionを発生させる 検査例外 HelloExceptionControllerAdviceで特にキャッチしない例外
+     * 
+     * @throws Exception
+     */
+    @GetMapping("/occurOtherException")
+    public String occurOtherException() throws IOException {
+        throw new IOException("IOExceptionが発生しました");
+    }
+
     @PostMapping("/user")
-    public String addUser(@ModelAttribute @Validated UserForm form, BindingResult result, Model model) {
+    public String addUser(@ModelAttribute("form") @Validated UserForm form, Model model) {
         UserDto u = us.addUser(form.toEntity());
         model.addAttribute("user", u);
         return "success";

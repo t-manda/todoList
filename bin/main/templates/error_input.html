@@ -2,12 +2,10 @@
 <html lang="ja" xmlns:th="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="UTF-8" />
-    <title>User</title>
+    <title>error_input</title>
   </head>
   <body>
-    <p
-      th:text="'ID: ' + ${user.uid} + '  Name: ' + ${user.name} + ' Created at: ' + ${user.checkedAt}"
-    ></p>
+    <p th:text="${errMsg}"></p>
     <a href="index.html">return</a><br />
   </body>
 </html>
