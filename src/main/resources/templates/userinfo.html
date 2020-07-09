@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>uid検索結果</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+  </head>
+
+  <body>
+    <h1>uid検索結果</h1>
+    <p
+      th:text="'ID: ' + ${user.uid} + '  Name: ' + ${user.name} + ' Created at: ' + ${user.checkedAt}"
+    ></p>
+    <a href="index.html">return</a><br />
+  </body>
+</html>
