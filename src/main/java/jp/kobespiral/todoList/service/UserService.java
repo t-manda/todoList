@@ -22,7 +22,7 @@ public class UserService {
     // 複数（ないと思うけど）あれば1つ目を取る
     public UserDto getUser(String uid) {
 
-        for (User u : users.findUserByUidLike("%" + uid + "%")) {
+        for (User u : users.findUserByUid("%" + uid + "%")) {
             return UserDto.build(u);// 1つ目を返す
         }
         return null;
@@ -47,7 +47,7 @@ public class UserService {
     public UserDto addUser(User user) throws AccessDeniedException {
         String uid = user.getUid();
         // id重複があればエラー
-        if (size(users.findUserByUidLike(uid)) != 0) {
+        if (size(users.findUserByUid(uid)) != 0) {
             throw new AccessDeniedException(null);
         } else {
             return UserDto.build(users.save(user));
